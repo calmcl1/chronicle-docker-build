@@ -19,6 +19,7 @@ RUN chmod +x vcpkg
 RUN CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ ./vcpkg install boost-build --triplet x64-mingw-static --only-downloads
 RUN sed -i 's/cp b2/cp b2.exe/' ./packages/boost-build_x64-mingw-static/tools/boost-build/src/engine/build.sh
 RUN sed -i 's/if(VCPKG_TARGET_IS_WINDOWS)/if(VCPKG_TARGET_IS_WINDOWS AND NOT VCPKG_TARGET_IS_MINGW)/' ./ports/mp3lame/portfile.cmake
-RUN CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ ./vcpkg install libsndfile libflac libvorbis libogg spdlog boost-filesystem boost-program-options mp3lame --triplet x64-mingw-static --editable
+RUN CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ ./vcpkg install boost-build --editable --triplet x64-mingw-static
+RUN CC=x86_64-w64-mingw32-gcc CXX=x86_64-w64-mingw32-g++ ./vcpkg install libsndfile libflac libvorbis libogg spdlog boost-filesystem boost-program-options mp3lame --triplet x64-mingw-static
 
 #manual: boost, libmp3lame, curses
