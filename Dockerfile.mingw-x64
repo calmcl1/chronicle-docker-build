@@ -1,6 +1,6 @@
 FROM gcc:latest
 
-RUN apt-get update --qq
+RUN apt-get update -qq
 RUN apt-get install build-essential mingw32-w64 -y -qq
 
 RUN sudo update-alternatives --set x86_64-w64-mingw32-gcc /usr/bin/x86_64-w64-mingw32-gcc-posix
